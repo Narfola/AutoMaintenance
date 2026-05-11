@@ -1,50 +1,82 @@
-# Welcome to your Expo app 👋
+🚗 AutoMaintenance
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+AutoMaintenance est une application mobile développée avec React Native (Expo) et Supabase. Elle permet de gérer une flotte de véhicules, d'enregistrer les intervalles d'entretien et de calculer précisément la prochaine révision en fonction du dernier entretien effectué.
+✨ Fonctionnalités
 
-## Get started
+    Gestion de flotte : Ajoutez ou supprimez des modèles de véhicules (Marque, Modèle, Intervalle KM).
 
-1. Install dependencies
+    Calcul intelligent : Calcule l'échéance de l'entretien basé sur le kilométrage du dernier passage au garage.
 
-   ```bash
-   npm install
-   ```
+    Alertes de retard : Indique le nombre de kilomètres restants ou le dépassement de l'échéance.
 
-2. Start the app
+    Base de données Cloud : Synchronisation en temps réel avec Supabase.
 
-   ```bash
-   npx expo start
-   ```
+    Sécurité : Intégration des Row Level Security (RLS) pour protéger les données.
 
-In the output, you'll find options to open the app in a
+🛠️ Stack Technique
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+    Framework : React Native avec Expo (Expo Router).
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+    Backend : Supabase (PostgreSQL & Auth).
 
-## Get a fresh project
+    Langage : TypeScript.
 
-When you're ready, run:
+    Style : JSS (StyleSheet).
 
+🚀 Installation
+
+    1. Cloner le dépôt
+    Bash
+
+    git clone https://github.com/ton-pseudo/auto-maintenance.git
+    cd auto-maintenance
+
+    2. Installer les dépendances
+    npm install
+    ```
+
+3.  **Configurer les variables d'environnement**
+    Créez un fichier `.env` à la racine et ajoutez vos identifiants Supabase :
+    
+```env
+    EXPO_PUBLIC_SUPABASE_URL=votre_url_supabase
+    EXPO_PUBLIC_SUPABASE_ANON_KEY=votre_cle_anon
+    ```
+
+4.  **Lancer l'application**
+    
 ```bash
-npm run reset-project
-```
+    npx expo start
+    ```
+    Appuyez sur `i` pour iOS, `a` pour Android ou scannez le QR code avec l'application **Expo Go**.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 📊 Structure de la base de données (Supabase)
 
-## Learn more
+Pour faire fonctionner l'application, créez une table `modeles_voitures` avec les colonnes suivantes :
 
-To learn more about developing your project with Expo, look at the following resources:
+| Colonne | Type | Description |
+| :--- | :--- | :--- |
+| `id` | uuid | Clé primaire (générée automatiquement) |
+| `marque` | text | Marque du véhicule |
+| `nom_modele` | text | Nom du modèle |
+| `intervalle_km` | int4 | Kilométrage entre deux entretiens |
+| `intervalle_mois` | int4 | (Optionnel) Durée entre deux entretiens |
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 🔒 Sécurité (RLS)
 
-## Join the community
+N'oubliez pas d'activer les **Policies RLS** sur Supabase pour autoriser :
+*   `SELECT` : Pour lire les modèles.
+*   `INSERT` : Pour ajouter de nouveaux véhicules.
+*   `DELETE` : Pour supprimer des véhicules.
 
-Join our community of developers creating universal apps.
+## 📝 Licence
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Distribué sous la licence MIT. Voir `LICENSE` pour plus d'informations.
+
+---
+
+### 💡 Conseils pour ton GitHub :
+1.  **Ajoute des captures d'écran** : Les gens adorent voir à quoi ressemble l'appli avant de tester. Tu peux créer un dossier `screenshots` et les inclure dans le README.
+2.  **Fichier `.env.example`** : Comme ton `.env` est ignoré par Git, crée un fichier `.env.example` vide (juste les noms des variables) pour aider les autres à savoir quoi remplir.
+
+Ton projet est maintenant "prêt pour la production" ! Est-ce qu'il y a une autre partie du projet que tu aimerais documenter ?
