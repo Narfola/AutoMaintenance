@@ -68,15 +68,3 @@ N'oubliez pas d'activer les **Policies RLS** sur Supabase pour autoriser :
 *   `SELECT` : Pour lire les modèles.
 *   `INSERT` : Pour ajouter de nouveaux véhicules.
 *   `DELETE` : Pour supprimer des véhicules.
-
-## 📝 Licence
-
-Distribué sous la licence MIT. Voir `LICENSE` pour plus d'informations.
-
----
-
-### 💡 Conseils pour ton GitHub :
-1.  **Ajoute des captures d'écran** : Les gens adorent voir à quoi ressemble l'appli avant de tester. Tu peux créer un dossier `screenshots` et les inclure dans le README.
-2.  **Fichier `.env.example`** : Comme ton `.env` est ignoré par Git, crée un fichier `.env.example` vide (juste les noms des variables) pour aider les autres à savoir quoi remplir.
-
-Ton projet est maintenant "prêt pour la production" ! Est-ce qu'il y a une autre partie du projet que tu aimerais documenter ?
